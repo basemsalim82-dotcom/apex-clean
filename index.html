@@ -1,1 +1,1454 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="APEX CLEAN لخدمات تنظيف المنازل والمكاتب والكنب والسجاد بأعلى جودة وأسعار مناسبة. احجز خدمتك بسهولة.">
+  <title>APEX CLEAN | نظافة بمستوى تاني</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg2: #0b1728;
+      --card: #101f33;
+      --blue: #2684ff;
+      --cyan: #53c8ff;
+      --white: #f7faff;
+      --muted: #9eafc5;
+      --border: rgba(255,255,255,.09);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: "Cairo", sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1160px, 92%);
+      margin-inline: auto;
+    }
+
+    .top-glow {
+      position: absolute;
+      width: 440px;
+      height: 440px;
+      border-radius: 50%;
+      background: rgba(38,132,255,.13);
+      filter: blur(110px);
+      top: 30px;
+      right: -200px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Navigation */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7,17,31,.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      font-size: 23px;
+      letter-spacing: .5px;
+      white-space: nowrap;
+    }
+
+    .brand-icon {
+      width: 43px;
+      height: 43px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 25px;
+      background: linear-gradient(135deg, var(--blue), #42c8ff);
+      box-shadow: 0 5px 25px rgba(38,132,255,.3);
+    }
+
+    .brand span:last-child {
+      color: var(--cyan);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      color: #c0cde0;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      transition: color .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 13px;
+      padding: 12px 21px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      font-size: 14px;
+      transition: transform .25s, box-shadow .25s, background .25s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2684ff, #36b7ff);
+      color: white;
+      box-shadow: 0 8px 28px rgba(38,132,255,.22);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 12px 35px rgba(38,132,255,.4);
+    }
+
+    .btn-outline {
+      color: white;
+      border: 1px solid rgba(255,255,255,.17);
+      background: rgba(255,255,255,.035);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: white;
+      width: 43px;
+      height: 43px;
+      border-radius: 12px;
+      font-size: 22px;
+    }
+
+    /* Hero */
+
+    .hero {
+      position: relative;
+      padding: 95px 0 85px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 14px;
+      border: 1px solid rgba(83,200,255,.24);
+      border-radius: 50px;
+      color: var(--cyan);
+      background: rgba(38,132,255,.07);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: #45e5a0;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #45e5a0;
+    }
+
+    h1 {
+      font-size: clamp(35px, 5vw, 63px);
+      line-height: 1.4;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #53c8ff, #2684ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-description {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 520px;
+      margin-bottom: 29px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-bottom: 35px;
+    }
+
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      color: #bdcbe0;
+      font-size: 12px;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .trust-check {
+      color: #50dca3;
+      font-weight: 900;
+    }
+
+    .hero-visual {
+      min-height: 425px;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,.13);
+      box-shadow: 0 30px 90px rgba(0,0,0,.35);
+    }
+
+    .image-overlay {
+      position: absolute;
+      inset: 0;
+      border-radius: 30px;
+      background: linear-gradient(0deg, rgba(5,15,28,.6), transparent 60%);
+      pointer-events: none;
+    }
+
+    .floating-card {
+      position: absolute;
+      padding: 15px 18px;
+      border-radius: 18px;
+      background: rgba(13,29,48,.92);
+      border: 1px solid rgba(255,255,255,.13);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 18px 50px rgba(0,0,0,.24);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .rating-card {
+      top: 27px;
+      right: -24px;
+    }
+
+    .guarantee-card {
+      bottom: 26px;
+      left: -24px;
+      animation-delay: -2s;
+    }
+
+    .floating-title {
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .floating-subtitle {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .stars {
+      color: #ffc857;
+      letter-spacing: 2px;
+      font-size: 13px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Shared sections */
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 43px;
+    }
+
+    .section-tag {
+      color: var(--cyan);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(27px, 4vw, 39px);
+      font-weight: 900;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Services */
+
+    .services-section {
+      background: linear-gradient(180deg, transparent, rgba(16,31,51,.5), transparent);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      position: relative;
+      padding: 27px;
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, #11233a, #0c192a);
+      border: 1px solid var(--border);
+      transition: transform .3s, border-color .3s, box-shadow .3s;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      top: -100px;
+      left: -80px;
+      background: rgba(38,132,255,.18);
+      filter: blur(40px);
+      transition: .3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(83,200,255,.4);
+      box-shadow: 0 20px 45px rgba(0,0,0,.2);
+    }
+
+    .service-icon {
+      width: 57px;
+      height: 57px;
+      display: grid;
+      place-items: center;
+      background: rgba(38,132,255,.13);
+      border: 1px solid rgba(83,200,255,.13);
+      border-radius: 17px;
+      font-size: 27px;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 18px;
+      margin-bottom: 9px;
+      font-weight: 800;
+    }
+
+    .service-card p {
+      font-size: 13px;
+      color: var(--muted);
+      min-height: 49px;
+      margin-bottom: 20px;
+    }
+
+    .service-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-top: 17px;
+      border-top: 1px solid var(--border);
+    }
+
+    .price small {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .price strong {
+      color: var(--cyan);
+      font-size: 21px;
+    }
+
+    .price strong span {
+      font-size: 12px;
+    }
+
+    .small-book {
+      padding: 9px 13px;
+      font-size: 12px;
+    }
+
+    /* Why us */
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 17px;
+    }
+
+    .feature-card {
+      text-align: center;
+      padding: 24px 16px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.025);
+    }
+
+    .feature-icon {
+      font-size: 29px;
+      margin-bottom: 10px;
+    }
+
+    .feature-card h3 {
+      font-size: 15px;
+      margin-bottom: 7px;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* Stats */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 36px;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 25px 10px;
+      background: linear-gradient(135deg, rgba(38,132,255,.09), rgba(83,200,255,.025));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 29px;
+      color: var(--cyan);
+      font-weight: 900;
+    }
+
+    .stat-card span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Booking */
+
+    .booking-section {
+      background: linear-gradient(180deg, transparent, rgba(16,31,51,.55));
+    }
+
+    .booking-layout {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .booking-info {
+      padding: 30px;
+      background: linear-gradient(150deg, #12315a, #0c192a);
+      border: 1px solid rgba(83,200,255,.16);
+      border-radius: 24px;
+      position: sticky;
+      top: 105px;
+    }
+
+    .booking-info h3 {
+      font-size: 25px;
+      line-height: 1.5;
+      margin-bottom: 13px;
+    }
+
+    .booking-info > p {
+      color: #bdcbe0;
+      font-size: 13px;
+      margin-bottom: 27px;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 19px;
+    }
+
+    .contact-icon {
+      width: 43px;
+      height: 43px;
+      border-radius: 13px;
+      background: rgba(255,255,255,.08);
+      display: grid;
+      place-items: center;
+      font-size: 19px;
+      flex-shrink: 0;
+    }
+
+    .contact-row small {
+      display: block;
+      color: #afc3dd;
+      font-size: 11px;
+    }
+
+    .contact-row strong {
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .booking-form {
+      padding: 30px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+    }
+
+    .booking-form h3 {
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    .form-description {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 25px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 17px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #d6e1f1;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      min-width: 0;
+      border: 1px solid rgba(255,255,255,.1);
+      background: #0a1727;
+      border-radius: 12px;
+      color: white;
+      padding: 13px;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      font-size: 14px;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(38,132,255,.1);
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #72849c;
+    }
+
+    .field select option {
+      background: #0a1727;
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .form-submit {
+      width: 100%;
+      margin-top: 20px;
+      padding: 15px;
+      font-size: 15px;
+    }
+
+    .form-note {
+      color: var(--muted);
+      text-align: center;
+      font-size: 11px;
+      margin-top: 12px;
+    }
+
+    .form-message {
+      display: none;
+      padding: 13px;
+      border-radius: 12px;
+      margin-top: 15px;
+      font-size: 13px;
+    }
+
+    .form-message.error {
+      display: block;
+      background: rgba(255,90,90,.1);
+      color: #ffaaaa;
+      border: 1px solid rgba(255,90,90,.2);
+    }
+
+    .form-message.success {
+      display: block;
+      background: rgba(69,229,160,.1);
+      color: #80f0bd;
+      border: 1px solid rgba(69,229,160,.2);
+    }
+
+    /* Footer */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 42px 0 20px;
+      background: rgba(3,10,19,.55);
+    }
+
+    .footer-main {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      flex-wrap: wrap;
+      gap: 30px;
+      padding-bottom: 30px;
+    }
+
+    .footer-brand p {
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 300px;
+      margin-top: 12px;
+    }
+
+    .footer-links h4 {
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .footer-links a {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .footer-links a:hover {
+      color: var(--cyan);
+    }
+
+    .footer-bottom {
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      color: #8294ac;
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    /* Scroll animations */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* Tablet */
+
+    @media (max-width: 900px) {
+      .hero {
+        padding-top: 65px;
+      }
+
+      .hero-grid {
+        gap: 35px;
+      }
+
+      .hero-visual {
+        min-height: 350px;
+      }
+
+      .hero-image {
+        height: 350px;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .booking-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .booking-info {
+        position: static;
+      }
+    }
+
+    /* Mobile */
+
+    @media (max-width: 650px) {
+      .container {
+        width: 91%;
+      }
+
+      .navbar {
+        min-height: 68px;
+        gap: 10px;
+      }
+
+      .brand {
+        font-size: 19px;
+        gap: 7px;
+      }
+
+      .brand-icon {
+        width: 37px;
+        height: 37px;
+        border-radius: 11px;
+      }
+
+      .menu-toggle {
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        padding: 17px 5%;
+        background: #0a1727;
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 11px 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-cta {
+        padding: 10px 12px;
+        font-size: 12px;
+        white-space: nowrap;
+      }
+
+      .hero {
+        padding: 48px 0 45px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .hero-copy {
+        text-align: center;
+      }
+
+      .eyebrow {
+        margin-bottom: 17px;
+        font-size: 11px;
+      }
+
+      h1 {
+        font-size: clamp(34px, 9vw, 45px);
+        letter-spacing: -.7px;
+        line-height: 1.5;
+      }
+
+      .hero-description {
+        font-size: 14px;
+        margin-inline: auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .hero-trust {
+        justify-content: center;
+        gap: 12px;
+        font-size: 10px;
+      }
+
+      .hero-visual {
+        min-height: 280px;
+        margin: 0 7px;
+      }
+
+      .hero-image {
+        height: 280px;
+        border-radius: 22px;
+      }
+
+      .image-overlay {
+        border-radius: 22px;
+      }
+
+      .floating-card {
+        padding: 11px 13px;
+        border-radius: 13px;
+      }
+
+      .rating-card {
+        top: 13px;
+        right: -8px;
+      }
+
+      .guarantee-card {
+        bottom: 13px;
+        left: -8px;
+      }
+
+      section {
+        padding: 53px 0;
+      }
+
+      .section-heading {
+        margin-bottom: 27px;
+      }
+
+      .section-heading h2 {
+        font-size: 27px;
+      }
+
+      .section-heading p {
+        font-size: 12px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .service-card {
+        padding: 22px;
+      }
+
+      .service-card p {
+        min-height: auto;
+      }
+
+      .features-grid {
+        gap: 11px;
+      }
+
+      .feature-card {
+        padding: 18px 11px;
+      }
+
+      .stats {
+        gap: 9px;
+      }
+
+      .stat-card {
+        padding: 19px 5px;
+      }
+
+      .stat-card strong {
+        font-size: 23px;
+      }
+
+      .stat-card span {
+        font-size: 10px;
+      }
+
+      .booking-info,
+      .booking-form {
+        padding: 22px 17px;
+        border-radius: 19px;
+      }
+
+      .booking-info h3 {
+        font-size: 22px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .field input,
+      .field select,
+      .field textarea {
+        font-size: 16px;
+      }
+
+      .footer-main {
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-glow"></div>
+
+  <header>
+    <div class="container navbar">
+      <a href="#home" class="brand" aria-label="APEX CLEAN الرئيسية">
+        <span class="brand-icon">✦</span>
+        <span>APEX <span>CLEAN</span></span>
+      </a>
+
+      <nav class="nav-links" id="navLinks" aria-label="القائمة الرئيسية">
+        <a href="#home">الرئيسية</a>
+        <a href="#services">خدماتنا</a>
+        <a href="#about">ليه إحنا؟</a>
+        <a href="#booking">احجز دلوقتي</a>
+      </nav>
+
+      <a class="btn btn-primary nav-cta" href="#booking">احجز خدمتك ←</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow">
+            <span class="live-dot"></span>
+            النظافة اللي تليق بيك
+          </div>
+
+          <h1>
+            خلي النظافة<br>
+            علينا، واستمتع<br>
+            <span class="gradient-text">بمكان يفتح النفس.</span>
+          </h1>
+
+          <p class="hero-description">
+            في APEX CLEAN بنهتم بكل تفصيلة، من أصغر ركن لأكبر مساحة.
+            خدمات تنظيف احترافية للبيوت والمكاتب، بجودة تقدر تلاحظها من أول مرة.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#booking">🗓️ احجز خدمتك دلوقتي</a>
+            <a class="btn btn-outline" href="#services">اكتشف خدماتنا ↓</a>
+          </div>
+
+          <div class="hero-trust">
+            <div class="trust-item"><span class="trust-check">✓</span> مواعيد منظمة</div>
+            <div class="trust-item"><span class="trust-check">✓</span> اهتمام بالتفاصيل</div>
+            <div class="trust-item"><span class="trust-check">✓</span> أسعار واضحة</div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <img
+            class="hero-image"
+            src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1100&q=85"
+            alt="تنظيف احترافي لمنزل"
+            fetchpriority="high"
+          >
+          <div class="image-overlay"></div>
+
+          <div class="floating-card rating-card">
+            <div class="stars">★★★★★</div>
+            <div class="floating-title">الجودة في كل تفصيلة</div>
+            <div class="floating-subtitle">اهتمام من أول خطوة لآخر لمسة</div>
+          </div>
+
+          <div class="floating-card guarantee-card">
+            <div class="floating-title">✨ نظافة تفرق</div>
+            <div class="floating-subtitle">خدمة باهتمام واحترافية</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services-section" id="services">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-tag">خدماتنا</div>
+          <h2>كل اللي محتاجه لنظافة <span class="gradient-text">من مستوى تاني</span></h2>
+          <p>اختار الخدمة المناسبة ليك، وإحنا نهتم بالباقي.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <div class="service-icon">🏠</div>
+            <h3>تنظيف المنازل</h3>
+            <p>تنظيف شامل للغرف والأرضيات والمطابخ والحمامات، عشان بيتك يبقى مرتب ومنعش.</p>
+            <div class="service-bottom">
+              <div class="price"><small>السعر بيبدأ من</small><strong>250 <span>جنيه</span></strong></div>
+              <a href="#booking" class="btn btn-primary small-book" data-service="home">احجز الخدمة</a>
+            </div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">🏢</div>
+            <h3>تنظيف المكاتب</h3>
+            <p>مساحات عمل نظيفة ومنظمة تساعدك تبدأ يومك في بيئة مريحة.</p>
+            <div class="service-bottom">
+              <div class="price"><small>السعر بيبدأ من</small><strong>350 <span>جنيه</span></strong></div>
+              <a href="#booking" class="btn btn-primary small-book" data-service="office">احجز الخدمة</a>
+            </div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">🛋️</div>
+            <h3>تنظيف الكنب والسجاد</h3>
+            <p>اهتمام بالأقمشة وإزالة الأتربة والبقع حسب نوع الخامة وحالتها.</p>
+            <div class="service-bottom">
+              <div class="price"><small>السعر بيبدأ من</small><strong>250 <span>جنيه</span></strong></div>
+              <a href="#booking" class="btn btn-primary small-book" data-service="sofa">احجز الخدمة</a>
+            </div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">🪟</div>
+            <h3>تنظيف الزجاج</h3>
+            <p>تنظيف الزجاج وإزالة الأتربة وآثار البقع عشان النتيجة تبقى أوضح.</p>
+            <div class="service-bottom">
+              <div class="price"><small>السعر بيبدأ من</small><strong>300 <span>جنيه</span></strong></div>
+              <a href="#booking" class="btn btn-primary small-book" data-service="glass">احجز الخدمة</a>
+            </div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">✨</div>
+            <h3>التنظيف العميق</h3>
+            <p>تنظيف مركز للأماكن اللي محتاجة عناية إضافية وتفاصيل أكتر.</p>
+            <div class="service-bottom">
+              <div class="price"><small>السعر بيبدأ من</small><strong>400 <span>جنيه</span></strong></div>
+              <a href="#booking" class="btn btn-primary small-book" data-service="deep">احجز الخدمة</a>
+            </div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">🧹</div>
+            <h3>تنظيف بعد التشطيب</h3>
+            <p>التخلص من آثار الأتربة وبقايا التشطيب وتجهيز المكان للاستخدام.</p>
+            <div class="service-bottom">
+              <div class="price"><small>السعر بيبدأ من</small><strong>500 <span>جنيه</span></strong></div>
+              <a href="#booking" class="btn btn-primary small-book" data-service="post">احجز الخدمة</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why choose us -->
+    <section id="about">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-tag">ليه APEX CLEAN؟</div>
+          <h2>مش مجرد تنظيف، <span class="gradient-text">دي راحة بال.</span></h2>
+          <p>هدفنا إن تجربتك تكون سهلة ومنظمة من لحظة الحجز لحد انتهاء الخدمة.</p>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card reveal">
+            <div class="feature-icon">⏱️</div>
+            <h3>تنظيم المواعيد</h3>
+            <p>بتحدد اليوم والوقت المناسب ليك عند طلب الخدمة.</p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">🧽</div>
+            <h3>اهتمام بالتفاصيل</h3>
+            <p>بنركز على تفاصيل المكان حسب الخدمة المطلوبة.</p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">💎</div>
+            <h3>جودة واحترافية</h3>
+            <p>هدفنا تقديم تجربة مريحة ونتيجة ترضيك.</p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">💰</div>
+            <h3>أسعار واضحة</h3>
+            <p>أسعار مبدئية ظاهرة قبل ما تبعت طلب الحجز.</p>
+          </article>
+        </div>
+
+        <div class="stats reveal">
+          <div class="stat-card">
+            <strong>6</strong>
+            <span>خدمات متنوعة</span>
+          </div>
+          <div class="stat-card">
+            <strong>100%</strong>
+            <span>اهتمام بالتفاصيل</span>
+          </div>
+          <div class="stat-card">
+            <strong>24/7</strong>
+            <span>استقبال طلبات الموقع</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking -->
+    <section class="booking-section" id="booking">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-tag">احجز خدمتك</div>
+          <h2>خطوة واحدة تفصلك عن <span class="gradient-text">مكان أنضف.</span></h2>
+          <p>املأ بياناتك واختار الخدمة والموعد المناسب ليك.</p>
+        </div>
+
+        <div class="booking-layout">
+          <aside class="booking-info reveal">
+            <h3>جاهز تخلي المكان يلمع؟ ✨</h3>
+            <p>ابعت طلب الحجز ببيانات صحيحة، وحدد الخدمة اللي محتاجها. هنتواصل معاك لتأكيد التفاصيل.</p>
+
+            <div class="contact-row">
+              <div class="contact-icon">📅</div>
+              <div>
+                <small>اختار موعدك</small>
+                <strong>اليوم والوقت المناسب ليك</strong>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="contact-icon">📍</div>
+              <div>
+                <small>حدد مكان الخدمة</small>
+                <strong>اكتب عنوانك بالتفصيل</strong>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="contact-icon">🤝</div>
+              <div>
+                <small>بعد إرسال الطلب</small>
+                <strong>يتم التواصل لتأكيد الحجز</strong>
+              </div>
+            </div>
+          </aside>
+
+          <form class="booking-form reveal" id="bookingForm">
+            <h3>بيانات الحجز</h3>
+            <p class="form-description">كل الخانات اللي عليها علامة * مطلوبة.</p>
+
+            <div class="form-grid">
+              <div class="field">
+                <label for="customerName">الاسم بالكامل *</label>
+                <input id="customerName" name="customerName" type="text" placeholder="اكتب اسمك" autocomplete="name" required minlength="2" maxlength="100">
+              </div>
+
+              <div class="field">
+                <label for="phone">رقم الموبايل *</label>
+                <input id="phone" name="phone" type="tel" placeholder="01xxxxxxxxx" autocomplete="tel" inputmode="tel" required maxlength="20">
+              </div>
+
+              <div class="field full">
+                <label for="address">عنوان الخدمة بالتفصيل *</label>
+                <input id="address" name="address" type="text" placeholder="المحافظة، المنطقة، الشارع، رقم العقار" autocomplete="street-address" required maxlength="300">
+              </div>
+
+              <div class="field full">
+                <label for="service">اختار الخدمة *</label>
+                <select id="service" name="service" required>
+                  <option value="">اختار الخدمة المناسبة</option>
+                  <option value="home">تنظيف المنازل — يبدأ من 250 جنيه</option>
+                  <option value="office">تنظيف المكاتب — يبدأ من 350 جنيه</option>
+                  <option value="sofa">تنظيف الكنب والسجاد — يبدأ من 250 جنيه</option>
+                  <option value="glass">تنظيف الزجاج — يبدأ من 300 جنيه</option>
+                  <option value="deep">التنظيف العميق — يبدأ من 400 جنيه</option>
+                  <option value="post">تنظيف بعد التشطيب — يبدأ من 500 جنيه</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="date">تاريخ الحجز *</label>
+                <input id="date" name="date" type="date" required>
+              </div>
+
+              <div class="field">
+                <label for="time">وقت الحجز *</label>
+                <select id="time" name="time" required>
+                  <option value="">اختار الوقت</option>
+                  <option value="09:00">9 صباحًا</option>
+                  <option value="11:00">11 صباحًا</option>
+                  <option value="13:00">1 ظهرًا</option>
+                  <option value="15:00">3 عصرًا</option>
+                  <option value="17:00">5 مساءً</option>
+                  <option value="19:00">7 مساءً</option>
+                </select>
+              </div>
+
+              <div class="field full">
+                <label for="notes">ملاحظات إضافية (اختياري)</label>
+                <textarea id="notes" name="notes" placeholder="فيه تفاصيل تحب توضحها عن المكان أو الخدمة؟" maxlength="1000"></textarea>
+              </div>
+            </div>
+
+            <button class="btn btn-primary form-submit" type="submit">إرسال طلب الحجز ←</button>
+            <p class="form-note">إرسال النموذج في النسخة الحالية للتجربة فقط، مش تأكيد لحجز حقيقي.</p>
+            <div class="form-message" id="formMessage" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a href="#home" class="brand">
+            <span class="brand-icon">✦</span>
+            <span>APEX <span>CLEAN</span></span>
+          </a>
+          <p>بنساعدك تستمتع بمكان أنضف وأرتب، من خلال خدمات تنظيف باهتمام واحترافية.</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>روابط سريعة</h4>
+          <a href="#home">الرئيسية</a>
+          <a href="#services">خدماتنا وأسعارنا</a>
+          <a href="#about">ليه تختارنا؟</a>
+          <a href="#booking">احجز خدمتك</a>
+        </div>
+
+        <div class="footer-links">
+          <h4>خدماتنا</h4>
+          <a href="#services">تنظيف المنازل</a>
+          <a href="#services">تنظيف المكاتب</a>
+          <a href="#services">الكنب والسجاد</a>
+          <a href="#services">التنظيف العميق</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> APEX CLEAN — جميع الحقوق محفوظة.</span>
+        <span>Designed with care by Basem ✦</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.textContent = isOpen ? "✕" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    // Minimum booking date: today
+    const dateInput = document.getElementById("date");
+    const today = new Date();
+    const localToday = [
+      today.getFullYear(),
+      String(today.getMonth() + 1).padStart(2, "0"),
+      String(today.getDate()).padStart(2, "0")
+    ].join("-");
+
+    dateInput.min = localToday;
+
+    // Select a service from service cards
+    document.querySelectorAll("[data-service]").forEach(button => {
+      button.addEventListener("click", () => {
+        document.getElementById("service").value = button.dataset.service;
+      });
+    });
+
+    // Demo form only — does not save bookings to a server
+    const bookingForm = document.getElementById("bookingForm");
+    const formMessage = document.getElementById("formMessage");
+
+    bookingForm.addEventListener("submit", event => {
+      event.preventDefault();
+
+      formMessage.className = "form-message";
+      formMessage.textContent = "";
+
+      if (!bookingForm.checkValidity()) {
+        bookingForm.reportValidity();
+        return;
+      }
+
+      formMessage.className = "form-message error";
+      formMessage.textContent =
+        "الموقع لسه في مرحلة التجهيز. الحجز مش بيتحفظ حاليًا. هنضيف قاعدة بيانات ونظام حجز فعلي في الخطوة الجاية.";
+
+      formMessage.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Scroll reveal animation
+    const revealElements = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealElements.forEach(element => observer.observe(element));
+    } else {
+      revealElements.forEach(element => element.classList.add("visible"));
+    }
+  </script>
+</body>
+  </html>
