@@ -1,1 +1,364 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07111f">
+<title>APEX CLEAN | لوحة الإدارة</title>
 
+<style>
+:root{
+  --bg:#07111f;
+  --card:#101e30;
+  --blue:#168cff;
+  --text:#f5f8ff;
+  --muted:#94a6bd;
+  --border:#20334b;
+  --green:#25d6a2;
+  --red:#ff647c;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Tahoma,Arial,sans-serif;min-height:100vh
+}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+.container{width:min(1100px,100%);margin:auto;padding:20px}
+.brand{font-size:25px;font-weight:900;letter-spacing:1px}
+.brand span{color:var(--blue)}
+.subtitle{color:var(--muted);font-size:13px;margin-top:8px}
+.login-wrap{
+  min-height:100vh;display:grid;place-items:center;padding:20px;
+  background:radial-gradient(ellipse at top,#12345a 0%,transparent 55%),var(--bg)
+}
+.login-card{
+  width:min(420px,100%);padding:28px;border:1px solid var(--border);
+  border-radius:24px;background:#101e30;
+  box-shadow:0 25px 70px #0005
+}
+.login-card h1{font-size:24px;margin:28px 0 8px}
+.field{margin-top:18px}
+label{display:block;color:#c8d6e8;font-size:13px;margin-bottom:9px}
+input,select{
+  width:100%;padding:14px;color:white;background:#091525;
+  border:1px solid var(--border);border-radius:12px;outline:none
+}
+input:focus,select:focus{border-color:var(--blue)}
+.primary,.secondary,.danger{
+  border:0;border-radius:12px;padding:12px 16px;font-weight:bold
+}
+.primary{color:white;background:linear-gradient(135deg,#168cff,#1263df)}
+.secondary{color:white;background:#20334b}
+.danger{color:white;background:#9d2e45}
+.full{width:100%;margin-top:22px}
+.message{
+  margin-top:15px;padding:12px;border-radius:10px;
+  font-size:13px;line-height:1.8;overflow-wrap:anywhere
+}
+.error{color:#ff9bab;background:#3a1723}
+.success{color:#75f2ca;background:#10372f}
+header{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:15px;flex-wrap:wrap;padding-bottom:22px;
+  border-bottom:1px solid var(--border)
+}
+.welcome{margin:28px 0}
+.welcome h1{font-size:27px;margin:0 0 9px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:22px 0}
+.stat,.panel{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:18px;padding:20px;min-width:0
+}
+.stat small{color:var(--muted)}
+.stat strong{display:block;font-size:30px;margin-top:14px}
+.panel{margin-top:20px}
+.panel h2{font-size:19px;margin:0 0 18px}
+.price-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.price-grid input{margin-top:8px}
+.section-note{color:var(--muted);font-size:12px;line-height:1.8;margin-top:12px}
+.booking{padding:17px 0;border-bottom:1px solid var(--border)}
+.booking-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.booking p{color:#c2cede;font-size:13px;line-height:1.9;overflow-wrap:anywhere}
+.badge{display:inline-block;border-radius:20px;padding:6px 10px;background:#20334b;font-size:11px}
+.status-select{width:auto;max-width:100%;padding:9px}
+.empty{color:var(--muted);text-align:center;padding:25px 0}
+.footer{color:#64768d;text-align:center;font-size:12px;padding:35px 0 15px}
+@media(max-width:650px){
+ .container{padding:15px}
+ .stats,.price-grid{grid-template-columns:1fr}
+ .stat{padding:16px}
+ .stat strong{font-size:25px}
+ .login-card{padding:22px}
+ header .secondary{width:100%}
+}
+</style>
+</head>
+<body>
+
+<section id="loginScreen" class="login-wrap">
+  <div class="login-card">
+    <div class="brand">APEX <span>CLEAN</span></div>
+    <div class="subtitle">ADMINISTRATION PANEL</div>
+    <h1>أهلاً بيك 👋</h1>
+    <p class="subtitle">سجّل دخولك لإدارة حجوزات وأسعار أبيكس كلين.</p>
+
+    <form id="loginForm">
+      <div class="field">
+        <label for="email">البريد الإلكتروني</label>
+        <input id="email" type="email" autocomplete="username"
+          value="basemsalim82@gmail.com" required>
+      </div>
+      <div class="field">
+        <label for="password">كلمة المرور</label>
+        <input id="password" type="password"
+          autocomplete="current-password" required>
+      </div>
+      <button id="loginButton" class="primary full" type="submit">
+        تسجيل الدخول
+      </button>
+    </form>
+    <div id="loginMessage" aria-live="polite"></div>
+  </div>
+</section>
+
+<section id="dashboard" class="hidden">
+  <div class="container">
+    <header>
+      <div>
+        <div class="brand">APEX <span>CLEAN</span></div>
+        <div class="subtitle">لوحة التحكم والإدارة</div>
+      </div>
+      <button id="logoutButton" class="secondary">تسجيل الخروج</button>
+    </header>
+
+    <div class="welcome">
+      <h1>لوحة الإدارة 👋</h1>
+      <div class="subtitle">إدارة الحجوزات وأسعار الخدمات.</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><small>إجمالي الحجوزات</small><strong id="totalCount">—</strong></div>
+      <div class="stat"><small>حجوزات جديدة</small><strong id="newCount">—</strong></div>
+      <div class="stat"><small>حجوزات مكتملة</small><strong id="doneCount">—</strong></div>
+    </div>
+
+    <section class="panel">
+      <h2>💰 أسعار الخدمات</h2>
+      <div class="price-grid">
+        <div>
+          <label for="ordinaryPrice">التنظيف العادي — جنيه</label>
+          <input id="ordinaryPrice" type="number" min="0" step="1">
+        </div>
+        <div>
+          <label for="deepPrice">التنظيف العميق — جنيه</label>
+          <input id="deepPrice" type="number" min="0" step="1">
+        </div>
+        <div>
+          <label for="afterPrice">ما بعد التشطيب — جنيه</label>
+          <input id="afterPrice" type="number" min="0" step="1">
+        </div>
+      </div>
+      <button id="savePricesButton" class="primary full">حفظ الأسعار</button>
+      <div id="priceMessage" aria-live="polite"></div>
+      <div class="section-note">تحديث أسعار صفحة العملاء يحتاج ربطها بنفس قاعدة البيانات.</div>
+    </section>
+
+    <section class="panel">
+      <h2>📋 الحجوزات</h2>
+      <div id="bookingsList"><div class="empty">جاري تحميل الحجوزات...</div></div>
+    </section>
+
+    <div class="footer">APEX CLEAN · Designed by Basem</div>
+  </div>
+</section>
+
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+import {
+  getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+import {
+  getDatabase, ref, set, update, onValue
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCvAUC-sVm6N4DIGE3TO2b-J2m4PlL85Xk",
+  authDomain: "apex-clean-5e948.firebaseapp.com",
+  databaseURL: "https://apex-clean-5e948-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "apex-clean-5e948",
+  storageBucket: "apex-clean-5e948.firebasestorage.app",
+  messagingSenderId: "1016250086561",
+  appId: "1:1016250086561:web:a118ea7a3ab4e7486a6ce0",
+  measurementId: "G-ZZHMY2L1Y6"
+};
+
+const ADMIN_EMAIL = "basemsalim82@gmail.com";
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getDatabase(app);
+const $ = id => document.getElementById(id);
+
+let stopBookings = null;
+let stopPrices = null;
+
+function message(id,text,type="error"){
+  const el=$(id);
+  el.className="message "+type;
+  el.textContent=text;
+}
+function clearMessage(id){$(id).textContent="";$(id).className=""}
+function isAdmin(user){
+  return !!user && user.email?.toLowerCase()===ADMIN_EMAIL.toLowerCase();
+}
+function stopListeners(){
+  if(stopBookings){stopBookings();stopBookings=null}
+  if(stopPrices){stopPrices();stopPrices=null}
+}
+function esc(value){
+  return String(value??"").replace(/[&<>"']/g,c=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+  })[c]);
+}
+function renderBookings(data){
+  const list=$("bookingsList");
+  const items=data&&typeof data==="object"
+    ?Object.entries(data).map(([id,item])=>({id,...(item||{})})):[];
+  $("totalCount").textContent=items.length;
+  $("newCount").textContent=items.filter(b=>!b.status||b.status==="new"||b.status==="جديد").length;
+  $("doneCount").textContent=items.filter(b=>b.status==="completed"||b.status==="مكتمل").length;
+  if(!items.length){
+    list.innerHTML='<div class="empty">لا توجد حجوزات محفوظة حاليًا.</div>';
+    return;
+  }
+  list.innerHTML=items.reverse().map(b=>{
+    const status=b.status||"new";
+    const date=b.createdAt||b.date||"غير محدد";
+    return `<article class="booking">
+      <div class="booking-top">
+        <strong>${esc(b.name||b.customerName||"بدون اسم")}</strong>
+        <span class="badge">${esc(status)}</span>
+      </div>
+      <p>
+        📞 الهاتف: ${esc(b.phone||"غير مسجل")}<br>
+        🧹 الخدمة: ${esc(b.service||"غير محدد")}<br>
+        📍 العنوان: ${esc(b.address||"غير مسجل")}<br>
+        📅 الموعد: ${esc(date)}<br>
+        📝 ملاحظات: ${esc(b.notes||"لا توجد")}
+      </p>
+      <label>حالة الحجز</label>
+      <select class="status-select" data-status-id="${esc(b.id)}">
+        <option value="new" ${status==="new"?"selected":""}>جديد</option>
+        <option value="confirmed" ${status==="confirmed"?"selected":""}>تم التأكيد</option>
+        <option value="completed" ${status==="completed"?"selected":""}>مكتمل</option>
+        <option value="cancelled" ${status==="cancelled"?"selected":""}>ملغي</option>
+      </select>
+      <button class="primary" data-save-status="${esc(b.id)}">حفظ الحالة</button>
+    </article>`;
+  }).join("");
+}
+
+function listenData(){
+  stopListeners();
+  stopBookings=onValue(ref(db,"bookings"),snap=>renderBookings(snap.val()),()=>{
+    $("bookingsList").innerHTML='<div class="message error">تعذرت قراءة الحجوزات. راجع قواعد الأمان.</div>';
+  });
+  stopPrices=onValue(ref(db,"prices"),snap=>{
+    const p=snap.val()||{};
+    $("ordinaryPrice").value=p.ordinary??100;
+    $("deepPrice").value=p.deep??150;
+    $("afterPrice").value=p.after??200;
+  },()=>message("priceMessage","تعذر تحميل الأسعار. راجع قواعد الأمان."));
+}
+
+$("loginForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  clearMessage("loginMessage");
+  const btn=$("loginButton");
+  btn.disabled=true;
+  btn.textContent="جاري تسجيل الدخول...";
+  try{
+    const result=await signInWithEmailAndPassword(
+      auth,$("email").value.trim(),$("password").value
+    );
+    if(!isAdmin(result.user)){
+      await signOut(auth);
+      throw new Error("الحساب غير مصرح له بدخول لوحة الإدارة.");
+    }
+  }catch(error){
+    message("loginMessage",error.code==="auth/invalid-credential"
+      ?"الإيميل أو كلمة المرور غير صحيحة."
+      :(error.message||"تعذر تسجيل الدخول."));
+  }finally{
+    btn.disabled=false;
+    btn.textContent="تسجيل الدخول";
+  }
+});
+
+$("logoutButton").addEventListener("click",async()=>{
+  stopListeners();
+  await signOut(auth);
+});
+
+$("savePricesButton").addEventListener("click",async()=>{
+  if(!isAdmin(auth.currentUser)){
+    message("priceMessage","غير مصرح لك بتعديل الأسعار.");return;
+  }
+  const ordinary=Number($("ordinaryPrice").value);
+  const deep=Number($("deepPrice").value);
+  const after=Number($("afterPrice").value);
+  if([ordinary,deep,after].some(n=>!Number.isFinite(n)||n<0)){
+    message("priceMessage","اكتب أسعارًا صحيحة.");return;
+  }
+  const btn=$("savePricesButton");
+  btn.disabled=true;
+  try{
+    await set(ref(db,"prices"),{ordinary,deep,after,updatedAt:Date.now()});
+    message("priceMessage","تم حفظ الأسعار بنجاح.","success");
+  }catch(error){
+    message("priceMessage","تعذر الحفظ؛ قواعد أمان قاعدة البيانات تحتاج إعدادًا.");
+  }finally{btn.disabled=false}
+});
+
+$("bookingsList").addEventListener("click",async e=>{
+  const btn=e.target.closest("[data-save-status]");
+  if(!btn)return;
+  if(!isAdmin(auth.currentUser)){alert("غير مصرح.");return}
+  const id=btn.dataset.saveStatus;
+  const select=$("bookingsList").querySelector(
+    `[data-status-id="${CSS.escape(id)}"]`
+  );
+  if(!select)return;
+  btn.disabled=true;
+  try{
+    await update(ref(db,"bookings/"+id),{
+      status:select.value,updatedAt:Date.now()
+    });
+    alert("تم تحديث حالة الحجز.");
+  }catch(error){
+    alert("تعذر تحديث الحجز. راجع قواعد الأمان.");
+  }finally{btn.disabled=false}
+});
+
+onAuthStateChanged(auth,user=>{
+  stopListeners();
+  if(!user){
+    $("loginScreen").classList.remove("hidden");
+    $("dashboard").classList.add("hidden");
+    return;
+  }
+  if(!isAdmin(user)){
+    signOut(auth);
+    $("loginScreen").classList.remove("hidden");
+    $("dashboard").classList.add("hidden");
+    message("loginMessage","هذا الحساب غير مصرح له بدخول لوحة الإدارة.");
+    return;
+  }
+  $("loginScreen").classList.add("hidden");
+  $("dashboard").classList.remove("hidden");
+  listenData();
+});
+</script>
+</body>
+</html>
